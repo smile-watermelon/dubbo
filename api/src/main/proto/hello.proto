@@ -47,7 +47,8 @@ message HelloRequest {
   // optional 在语法3中，不用写默认是 optional
   string password = 4;
   repeated string address = 5;
-  bool flag = 6;
+  // deprecated 弃用该字段，java里在字段上加@Deprecated注解
+  bool flag = 6 [deprecated = true];
 }
 // 定义响应数据
 message HelloResponse {
