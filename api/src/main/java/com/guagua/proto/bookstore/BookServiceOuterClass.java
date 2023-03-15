@@ -35,11 +35,12 @@ public final class BookServiceOuterClass {
     java.lang.String[] descriptorData = {
       "\n\022book_service.proto\022\tbookstore\032\022book_me" +
       "ssage.proto\"2\n\021CreateBookRequest\022\035\n\004book" +
-      "\030\001 \001(\0132\017.bookstore.Book\" \n\022CreateBookRes" +
-      "ponse\022\n\n\002id\030\001 \001(\t2Z\n\013BookService\022K\n\nCrea" +
-      "teBook\022\034.bookstore.CreateBookRequest\032\035.b" +
-      "ookstore.CreateBookResponse\"\000B\036\n\032com.gua" +
-      "gua.proto.bookstoreP\001b\006proto3"
+      "\030\001 \001(\0132\017.bookstore.Book\"3\n\022CreateBookRes" +
+      "ponse\022\035\n\004book\030\001 \001(\0132\017.bookstore.Book2U\n\013" +
+      "BookService\022F\n\007addBook\022\034.bookstore.Creat" +
+      "eBookRequest\032\035.bookstore.CreateBookRespo" +
+      "nseB\036\n\032com.guagua.proto.bookstoreP\001b\006pro" +
+      "to3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -65,7 +66,7 @@ public final class BookServiceOuterClass {
     internal_static_bookstore_CreateBookResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_bookstore_CreateBookResponse_descriptor,
-        new java.lang.String[] { "Id", });
+        new java.lang.String[] { "Book", });
     com.guagua.proto.bookstore.BookMessage.getDescriptor();
   }
 

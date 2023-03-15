@@ -3,6 +3,8 @@ package com.guagua.bookstore.common;
 
 import com.guagua.proto.bookstore.AuthorMessage;
 import com.guagua.proto.bookstore.Book;
+import com.guagua.proto.bookstore.CreateBookRequest;
+import com.guagua.proto.bookstore.CreateBookRequestOrBuilder;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -18,6 +20,12 @@ public class Generator {
     public static void main(String[] args) {
         double d = new BigDecimal("1.245").setScale(2, RoundingMode.HALF_UP).doubleValue();
         System.out.println(d);
+    }
+
+    public static CreateBookRequest getCreateBookRequest() {
+        return CreateBookRequest.newBuilder()
+                .setBook(getBook())
+                .build();
     }
     public static Book getBook() {
         return Book.newBuilder()

@@ -8,12 +8,15 @@ public interface CreateBookResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string id = 1;</code>
+   * <code>.bookstore.Book book = 1;</code>
    */
-  java.lang.String getId();
+  boolean hasBook();
   /**
-   * <code>string id = 1;</code>
+   * <code>.bookstore.Book book = 1;</code>
    */
-  com.google.protobuf.ByteString
-      getIdBytes();
+  com.guagua.proto.bookstore.Book getBook();
+  /**
+   * <code>.bookstore.Book book = 1;</code>
+   */
+  com.guagua.proto.bookstore.BookOrBuilder getBookOrBuilder();
 }

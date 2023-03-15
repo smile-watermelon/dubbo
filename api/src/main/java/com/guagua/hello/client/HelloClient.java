@@ -1,4 +1,4 @@
-package com.guagua.proto.hello.client;
+package com.guagua.hello.client;
 
 import com.guagua.proto.hello.HelloRequest;
 import com.guagua.proto.hello.HelloResponse;

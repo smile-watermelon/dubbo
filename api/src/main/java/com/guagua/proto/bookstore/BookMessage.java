@@ -29,10 +29,11 @@ public final class BookMessage {
   static {
     java.lang.String[] descriptorData = {
       "\n\022book_message.proto\022\tbookstore\032\024author_" +
-      "message.proto\"a\n\004Book\022\014\n\004name\030\001 \001(\t\022\025\n\rs" +
-      "elling_price\030\002 \001(\001\022\021\n\tpublisher\030\003 \001(\t\022!\n" +
-      "\006author\030\004 \001(\0132\021.bookstore.AuthorB\036\n\032com." +
-      "guagua.proto.bookstoreP\001b\006proto3"
+      "message.proto\"m\n\004Book\022\n\n\002id\030\001 \001(\r\022\014\n\004nam" +
+      "e\030\002 \001(\t\022\025\n\rselling_price\030\003 \001(\001\022\021\n\tpublis" +
+      "her\030\004 \001(\t\022!\n\006author\030\005 \001(\0132\021.bookstore.Au" +
+      "thorB\036\n\032com.guagua.proto.bookstoreP\001b\006pr" +
+      "oto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -52,7 +53,7 @@ public final class BookMessage {
     internal_static_bookstore_Book_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_bookstore_Book_descriptor,
-        new java.lang.String[] { "Name", "SellingPrice", "Publisher", "Author", });
+        new java.lang.String[] { "Id", "Name", "SellingPrice", "Publisher", "Author", });
     com.guagua.proto.bookstore.AuthorMessage.getDescriptor();
   }
 

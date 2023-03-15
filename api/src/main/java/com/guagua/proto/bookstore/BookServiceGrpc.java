@@ -28,34 +28,34 @@ public final class BookServiceGrpc {
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.guagua.proto.bookstore.CreateBookRequest,
-      com.guagua.proto.bookstore.CreateBookResponse> getCreateBookMethod;
+      com.guagua.proto.bookstore.CreateBookResponse> getAddBookMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CreateBook",
+      fullMethodName = SERVICE_NAME + '/' + "addBook",
       requestType = com.guagua.proto.bookstore.CreateBookRequest.class,
       responseType = com.guagua.proto.bookstore.CreateBookResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<com.guagua.proto.bookstore.CreateBookRequest,
-      com.guagua.proto.bookstore.CreateBookResponse> getCreateBookMethod() {
-    io.grpc.MethodDescriptor<com.guagua.proto.bookstore.CreateBookRequest, com.guagua.proto.bookstore.CreateBookResponse> getCreateBookMethod;
-    if ((getCreateBookMethod = BookServiceGrpc.getCreateBookMethod) == null) {
+      com.guagua.proto.bookstore.CreateBookResponse> getAddBookMethod() {
+    io.grpc.MethodDescriptor<com.guagua.proto.bookstore.CreateBookRequest, com.guagua.proto.bookstore.CreateBookResponse> getAddBookMethod;
+    if ((getAddBookMethod = BookServiceGrpc.getAddBookMethod) == null) {
       synchronized (BookServiceGrpc.class) {
-        if ((getCreateBookMethod = BookServiceGrpc.getCreateBookMethod) == null) {
-          BookServiceGrpc.getCreateBookMethod = getCreateBookMethod =
+        if ((getAddBookMethod = BookServiceGrpc.getAddBookMethod) == null) {
+          BookServiceGrpc.getAddBookMethod = getAddBookMethod =
               io.grpc.MethodDescriptor.<com.guagua.proto.bookstore.CreateBookRequest, com.guagua.proto.bookstore.CreateBookResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateBook"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "addBook"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.guagua.proto.bookstore.CreateBookRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.guagua.proto.bookstore.CreateBookResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new BookServiceMethodDescriptorSupplier("CreateBook"))
+              .setSchemaDescriptor(new BookServiceMethodDescriptorSupplier("addBook"))
               .build();
         }
       }
     }
-    return getCreateBookMethod;
+    return getAddBookMethod;
   }
 
   /**
@@ -108,20 +108,20 @@ public final class BookServiceGrpc {
 
     /**
      */
-    public void createBook(com.guagua.proto.bookstore.CreateBookRequest request,
+    public void addBook(com.guagua.proto.bookstore.CreateBookRequest request,
         io.grpc.stub.StreamObserver<com.guagua.proto.bookstore.CreateBookResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getCreateBookMethod(), responseObserver);
+      asyncUnimplementedUnaryCall(getAddBookMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getCreateBookMethod(),
+            getAddBookMethod(),
             asyncUnaryCall(
               new MethodHandlers<
                 com.guagua.proto.bookstore.CreateBookRequest,
                 com.guagua.proto.bookstore.CreateBookResponse>(
-                  this, METHODID_CREATE_BOOK)))
+                  this, METHODID_ADD_BOOK)))
           .build();
     }
   }
@@ -142,10 +142,10 @@ public final class BookServiceGrpc {
 
     /**
      */
-    public void createBook(com.guagua.proto.bookstore.CreateBookRequest request,
+    public void addBook(com.guagua.proto.bookstore.CreateBookRequest request,
         io.grpc.stub.StreamObserver<com.guagua.proto.bookstore.CreateBookResponse> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getCreateBookMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getAddBookMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -165,9 +165,9 @@ public final class BookServiceGrpc {
 
     /**
      */
-    public com.guagua.proto.bookstore.CreateBookResponse createBook(com.guagua.proto.bookstore.CreateBookRequest request) {
+    public com.guagua.proto.bookstore.CreateBookResponse addBook(com.guagua.proto.bookstore.CreateBookRequest request) {
       return blockingUnaryCall(
-          getChannel(), getCreateBookMethod(), getCallOptions(), request);
+          getChannel(), getAddBookMethod(), getCallOptions(), request);
     }
   }
 
@@ -187,14 +187,14 @@ public final class BookServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.guagua.proto.bookstore.CreateBookResponse> createBook(
+    public com.google.common.util.concurrent.ListenableFuture<com.guagua.proto.bookstore.CreateBookResponse> addBook(
         com.guagua.proto.bookstore.CreateBookRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(getCreateBookMethod(), getCallOptions()), request);
+          getChannel().newCall(getAddBookMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_CREATE_BOOK = 0;
+  private static final int METHODID_ADD_BOOK = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -213,8 +213,8 @@ public final class BookServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_CREATE_BOOK:
-          serviceImpl.createBook((com.guagua.proto.bookstore.CreateBookRequest) request,
+        case METHODID_ADD_BOOK:
+          serviceImpl.addBook((com.guagua.proto.bookstore.CreateBookRequest) request,
               (io.grpc.stub.StreamObserver<com.guagua.proto.bookstore.CreateBookResponse>) responseObserver);
           break;
         default:
@@ -278,7 +278,7 @@ public final class BookServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new BookServiceFileDescriptorSupplier())
-              .addMethod(getCreateBookMethod())
+              .addMethod(getAddBookMethod())
               .build();
         }
       }

@@ -1,4 +1,4 @@
-package com.guagua.proto.hello.service;
+package com.guagua.hello.service;
 
 import com.guagua.proto.hello.*;
 import io.grpc.stub.StreamObserver;

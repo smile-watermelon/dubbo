@@ -8,11 +8,16 @@ public interface BookOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>uint32 id = 1;</code>
+   */
+  int getId();
+
+  /**
    * <pre>
    * 书名
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 2;</code>
    */
   java.lang.String getName();
   /**
@@ -20,7 +25,7 @@ public interface BookOrBuilder extends
    * 书名
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 2;</code>
    */
   com.google.protobuf.ByteString
       getNameBytes();
@@ -30,7 +35,7 @@ public interface BookOrBuilder extends
    * 售价
    * </pre>
    *
-   * <code>double selling_price = 2;</code>
+   * <code>double selling_price = 3;</code>
    */
   double getSellingPrice();
 
@@ -39,7 +44,7 @@ public interface BookOrBuilder extends
    * 出版公司
    * </pre>
    *
-   * <code>string publisher = 3;</code>
+   * <code>string publisher = 4;</code>
    */
   java.lang.String getPublisher();
   /**
@@ -47,7 +52,7 @@ public interface BookOrBuilder extends
    * 出版公司
    * </pre>
    *
-   * <code>string publisher = 3;</code>
+   * <code>string publisher = 4;</code>
    */
   com.google.protobuf.ByteString
       getPublisherBytes();
@@ -57,7 +62,7 @@ public interface BookOrBuilder extends
    * 作者
    * </pre>
    *
-   * <code>.bookstore.Author author = 4;</code>
+   * <code>.bookstore.Author author = 5;</code>
    */
   boolean hasAuthor();
   /**
@@ -65,7 +70,7 @@ public interface BookOrBuilder extends
    * 作者
    * </pre>
    *
-   * <code>.bookstore.Author author = 4;</code>
+   * <code>.bookstore.Author author = 5;</code>
    */
   com.guagua.proto.bookstore.AuthorMessage.Author getAuthor();
   /**
@@ -73,7 +78,7 @@ public interface BookOrBuilder extends
    * 作者
    * </pre>
    *
-   * <code>.bookstore.Author author = 4;</code>
+   * <code>.bookstore.Author author = 5;</code>
    */
   com.guagua.proto.bookstore.AuthorMessage.AuthorOrBuilder getAuthorOrBuilder();
 }

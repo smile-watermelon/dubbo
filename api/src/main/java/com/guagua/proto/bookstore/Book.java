@@ -44,24 +44,29 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
+          case 8: {
+
+            id_ = input.readUInt32();
+            break;
+          }
+          case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
             name_ = s;
             break;
           }
-          case 17: {
+          case 25: {
 
             sellingPrice_ = input.readDouble();
             break;
           }
-          case 26: {
+          case 34: {
             java.lang.String s = input.readStringRequireUtf8();
 
             publisher_ = s;
             break;
           }
-          case 34: {
+          case 42: {
             com.guagua.proto.bookstore.AuthorMessage.Author.Builder subBuilder = null;
             if (author_ != null) {
               subBuilder = author_.toBuilder();
@@ -106,14 +111,23 @@ private static final long serialVersionUID = 0L;
             com.guagua.proto.bookstore.Book.class, com.guagua.proto.bookstore.Book.Builder.class);
   }
 
-  public static final int NAME_FIELD_NUMBER = 1;
+  public static final int ID_FIELD_NUMBER = 1;
+  private int id_;
+  /**
+   * <code>uint32 id = 1;</code>
+   */
+  public int getId() {
+    return id_;
+  }
+
+  public static final int NAME_FIELD_NUMBER = 2;
   private volatile java.lang.Object name_;
   /**
    * <pre>
    * 书名
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 2;</code>
    */
   public java.lang.String getName() {
     java.lang.Object ref = name_;
@@ -132,7 +146,7 @@ private static final long serialVersionUID = 0L;
    * 书名
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 2;</code>
    */
   public com.google.protobuf.ByteString
       getNameBytes() {
@@ -148,27 +162,27 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int SELLING_PRICE_FIELD_NUMBER = 2;
+  public static final int SELLING_PRICE_FIELD_NUMBER = 3;
   private double sellingPrice_;
   /**
    * <pre>
    * 售价
    * </pre>
    *
-   * <code>double selling_price = 2;</code>
+   * <code>double selling_price = 3;</code>
    */
   public double getSellingPrice() {
     return sellingPrice_;
   }
 
-  public static final int PUBLISHER_FIELD_NUMBER = 3;
+  public static final int PUBLISHER_FIELD_NUMBER = 4;
   private volatile java.lang.Object publisher_;
   /**
    * <pre>
    * 出版公司
    * </pre>
    *
-   * <code>string publisher = 3;</code>
+   * <code>string publisher = 4;</code>
    */
   public java.lang.String getPublisher() {
     java.lang.Object ref = publisher_;
@@ -187,7 +201,7 @@ private static final long serialVersionUID = 0L;
    * 出版公司
    * </pre>
    *
-   * <code>string publisher = 3;</code>
+   * <code>string publisher = 4;</code>
    */
   public com.google.protobuf.ByteString
       getPublisherBytes() {
@@ -203,14 +217,14 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int AUTHOR_FIELD_NUMBER = 4;
+  public static final int AUTHOR_FIELD_NUMBER = 5;
   private com.guagua.proto.bookstore.AuthorMessage.Author author_;
   /**
    * <pre>
    * 作者
    * </pre>
    *
-   * <code>.bookstore.Author author = 4;</code>
+   * <code>.bookstore.Author author = 5;</code>
    */
   public boolean hasAuthor() {
     return author_ != null;
@@ -220,7 +234,7 @@ private static final long serialVersionUID = 0L;
    * 作者
    * </pre>
    *
-   * <code>.bookstore.Author author = 4;</code>
+   * <code>.bookstore.Author author = 5;</code>
    */
   public com.guagua.proto.bookstore.AuthorMessage.Author getAuthor() {
     return author_ == null ? com.guagua.proto.bookstore.AuthorMessage.Author.getDefaultInstance() : author_;
@@ -230,7 +244,7 @@ private static final long serialVersionUID = 0L;
    * 作者
    * </pre>
    *
-   * <code>.bookstore.Author author = 4;</code>
+   * <code>.bookstore.Author author = 5;</code>
    */
   public com.guagua.proto.bookstore.AuthorMessage.AuthorOrBuilder getAuthorOrBuilder() {
     return getAuthor();
@@ -250,17 +264,20 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (id_ != 0) {
+      output.writeUInt32(1, id_);
+    }
     if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
     }
     if (sellingPrice_ != 0D) {
-      output.writeDouble(2, sellingPrice_);
+      output.writeDouble(3, sellingPrice_);
     }
     if (!getPublisherBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, publisher_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, publisher_);
     }
     if (author_ != null) {
-      output.writeMessage(4, getAuthor());
+      output.writeMessage(5, getAuthor());
     }
     unknownFields.writeTo(output);
   }
@@ -271,19 +288,23 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (id_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt32Size(1, id_);
+    }
     if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
     }
     if (sellingPrice_ != 0D) {
       size += com.google.protobuf.CodedOutputStream
-        .computeDoubleSize(2, sellingPrice_);
+        .computeDoubleSize(3, sellingPrice_);
     }
     if (!getPublisherBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, publisher_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, publisher_);
     }
     if (author_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, getAuthor());
+        .computeMessageSize(5, getAuthor());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -300,6 +321,8 @@ private static final long serialVersionUID = 0L;
     }
     com.guagua.proto.bookstore.Book other = (com.guagua.proto.bookstore.Book) obj;
 
+    if (getId()
+        != other.getId()) return false;
     if (!getName()
         .equals(other.getName())) return false;
     if (java.lang.Double.doubleToLongBits(getSellingPrice())
@@ -323,6 +346,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + getId();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + SELLING_PRICE_FIELD_NUMBER;
@@ -467,6 +492,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      id_ = 0;
+
       name_ = "";
 
       sellingPrice_ = 0D;
@@ -505,6 +532,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.guagua.proto.bookstore.Book buildPartial() {
       com.guagua.proto.bookstore.Book result = new com.guagua.proto.bookstore.Book(this);
+      result.id_ = id_;
       result.name_ = name_;
       result.sellingPrice_ = sellingPrice_;
       result.publisher_ = publisher_;
@@ -561,6 +589,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.guagua.proto.bookstore.Book other) {
       if (other == com.guagua.proto.bookstore.Book.getDefaultInstance()) return this;
+      if (other.getId() != 0) {
+        setId(other.getId());
+      }
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
         onChanged();
@@ -604,13 +635,39 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int id_ ;
+    /**
+     * <code>uint32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+    /**
+     * <code>uint32 id = 1;</code>
+     */
+    public Builder setId(int value) {
+      
+      id_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint32 id = 1;</code>
+     */
+    public Builder clearId() {
+      
+      id_ = 0;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object name_ = "";
     /**
      * <pre>
      * 书名
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -629,7 +686,7 @@ private static final long serialVersionUID = 0L;
      * 书名
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -649,7 +706,7 @@ private static final long serialVersionUID = 0L;
      * 书名
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      */
     public Builder setName(
         java.lang.String value) {
@@ -666,7 +723,7 @@ private static final long serialVersionUID = 0L;
      * 书名
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      */
     public Builder clearName() {
       
@@ -679,7 +736,7 @@ private static final long serialVersionUID = 0L;
      * 书名
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      */
     public Builder setNameBytes(
         com.google.protobuf.ByteString value) {
@@ -699,7 +756,7 @@ private static final long serialVersionUID = 0L;
      * 售价
      * </pre>
      *
-     * <code>double selling_price = 2;</code>
+     * <code>double selling_price = 3;</code>
      */
     public double getSellingPrice() {
       return sellingPrice_;
@@ -709,7 +766,7 @@ private static final long serialVersionUID = 0L;
      * 售价
      * </pre>
      *
-     * <code>double selling_price = 2;</code>
+     * <code>double selling_price = 3;</code>
      */
     public Builder setSellingPrice(double value) {
       
@@ -722,7 +779,7 @@ private static final long serialVersionUID = 0L;
      * 售价
      * </pre>
      *
-     * <code>double selling_price = 2;</code>
+     * <code>double selling_price = 3;</code>
      */
     public Builder clearSellingPrice() {
       
@@ -737,7 +794,7 @@ private static final long serialVersionUID = 0L;
      * 出版公司
      * </pre>
      *
-     * <code>string publisher = 3;</code>
+     * <code>string publisher = 4;</code>
      */
     public java.lang.String getPublisher() {
       java.lang.Object ref = publisher_;
@@ -756,7 +813,7 @@ private static final long serialVersionUID = 0L;
      * 出版公司
      * </pre>
      *
-     * <code>string publisher = 3;</code>
+     * <code>string publisher = 4;</code>
      */
     public com.google.protobuf.ByteString
         getPublisherBytes() {
@@ -776,7 +833,7 @@ private static final long serialVersionUID = 0L;
      * 出版公司
      * </pre>
      *
-     * <code>string publisher = 3;</code>
+     * <code>string publisher = 4;</code>
      */
     public Builder setPublisher(
         java.lang.String value) {
@@ -793,7 +850,7 @@ private static final long serialVersionUID = 0L;
      * 出版公司
      * </pre>
      *
-     * <code>string publisher = 3;</code>
+     * <code>string publisher = 4;</code>
      */
     public Builder clearPublisher() {
       
@@ -806,7 +863,7 @@ private static final long serialVersionUID = 0L;
      * 出版公司
      * </pre>
      *
-     * <code>string publisher = 3;</code>
+     * <code>string publisher = 4;</code>
      */
     public Builder setPublisherBytes(
         com.google.protobuf.ByteString value) {
@@ -828,7 +885,7 @@ private static final long serialVersionUID = 0L;
      * 作者
      * </pre>
      *
-     * <code>.bookstore.Author author = 4;</code>
+     * <code>.bookstore.Author author = 5;</code>
      */
     public boolean hasAuthor() {
       return authorBuilder_ != null || author_ != null;
@@ -838,7 +895,7 @@ private static final long serialVersionUID = 0L;
      * 作者
      * </pre>
      *
-     * <code>.bookstore.Author author = 4;</code>
+     * <code>.bookstore.Author author = 5;</code>
      */
     public com.guagua.proto.bookstore.AuthorMessage.Author getAuthor() {
       if (authorBuilder_ == null) {
@@ -852,7 +909,7 @@ private static final long serialVersionUID = 0L;
      * 作者
      * </pre>
      *
-     * <code>.bookstore.Author author = 4;</code>
+     * <code>.bookstore.Author author = 5;</code>
      */
     public Builder setAuthor(com.guagua.proto.bookstore.AuthorMessage.Author value) {
       if (authorBuilder_ == null) {
@@ -872,7 +929,7 @@ private static final long serialVersionUID = 0L;
      * 作者
      * </pre>
      *
-     * <code>.bookstore.Author author = 4;</code>
+     * <code>.bookstore.Author author = 5;</code>
      */
     public Builder setAuthor(
         com.guagua.proto.bookstore.AuthorMessage.Author.Builder builderForValue) {
@@ -890,7 +947,7 @@ private static final long serialVersionUID = 0L;
      * 作者
      * </pre>
      *
-     * <code>.bookstore.Author author = 4;</code>
+     * <code>.bookstore.Author author = 5;</code>
      */
     public Builder mergeAuthor(com.guagua.proto.bookstore.AuthorMessage.Author value) {
       if (authorBuilder_ == null) {
@@ -912,7 +969,7 @@ private static final long serialVersionUID = 0L;
      * 作者
      * </pre>
      *
-     * <code>.bookstore.Author author = 4;</code>
+     * <code>.bookstore.Author author = 5;</code>
      */
     public Builder clearAuthor() {
       if (authorBuilder_ == null) {
@@ -930,7 +987,7 @@ private static final long serialVersionUID = 0L;
      * 作者
      * </pre>
      *
-     * <code>.bookstore.Author author = 4;</code>
+     * <code>.bookstore.Author author = 5;</code>
      */
     public com.guagua.proto.bookstore.AuthorMessage.Author.Builder getAuthorBuilder() {
       
@@ -942,7 +999,7 @@ private static final long serialVersionUID = 0L;
      * 作者
      * </pre>
      *
-     * <code>.bookstore.Author author = 4;</code>
+     * <code>.bookstore.Author author = 5;</code>
      */
     public com.guagua.proto.bookstore.AuthorMessage.AuthorOrBuilder getAuthorOrBuilder() {
       if (authorBuilder_ != null) {
@@ -957,7 +1014,7 @@ private static final long serialVersionUID = 0L;
      * 作者
      * </pre>
      *
-     * <code>.bookstore.Author author = 4;</code>
+     * <code>.bookstore.Author author = 5;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.guagua.proto.bookstore.AuthorMessage.Author, com.guagua.proto.bookstore.AuthorMessage.Author.Builder, com.guagua.proto.bookstore.AuthorMessage.AuthorOrBuilder> 

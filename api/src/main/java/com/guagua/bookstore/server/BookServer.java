@@ -1,6 +1,6 @@
-package com.guagua.proto.hello.server;
+package com.guagua.bookstore.server;
 
-import com.guagua.proto.hello.service.HelloService;
+import com.guagua.bookstore.service.BookService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
@@ -9,26 +9,21 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * @author guagua
- * @date 2023/3/15 18:41
+ * @date 2023/3/15 13:19
  * @describe
  */
-public class HelloServer {
+public class BookServer {
 
     public static void main(String[] args) throws IOException {
         Server server = ServerBuilder.forPort(8888)
-                .addService(new HelloService())
+                .addService(new BookService())
                 .build()
                 .start();
 
         try {
             new CountDownLatch(1).await();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
-
-
-//        int number = HelloRequest.Gender.FEMALE.getNumber();
-//        System.out.println(number);
-
     }
 }

@@ -16,7 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private CreateBookResponse() {
-    id_ = "";
   }
 
   @java.lang.Override
@@ -44,9 +43,16 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+            com.guagua.proto.bookstore.Book.Builder subBuilder = null;
+            if (book_ != null) {
+              subBuilder = book_.toBuilder();
+            }
+            book_ = input.readMessage(com.guagua.proto.bookstore.Book.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(book_);
+              book_ = subBuilder.buildPartial();
+            }
 
-            id_ = s;
             break;
           }
           default: {
@@ -81,38 +87,25 @@ private static final long serialVersionUID = 0L;
             com.guagua.proto.bookstore.CreateBookResponse.class, com.guagua.proto.bookstore.CreateBookResponse.Builder.class);
   }
 
-  public static final int ID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object id_;
+  public static final int BOOK_FIELD_NUMBER = 1;
+  private com.guagua.proto.bookstore.Book book_;
   /**
-   * <code>string id = 1;</code>
+   * <code>.bookstore.Book book = 1;</code>
    */
-  public java.lang.String getId() {
-    java.lang.Object ref = id_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      id_ = s;
-      return s;
-    }
+  public boolean hasBook() {
+    return book_ != null;
   }
   /**
-   * <code>string id = 1;</code>
+   * <code>.bookstore.Book book = 1;</code>
    */
-  public com.google.protobuf.ByteString
-      getIdBytes() {
-    java.lang.Object ref = id_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      id_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public com.guagua.proto.bookstore.Book getBook() {
+    return book_ == null ? com.guagua.proto.bookstore.Book.getDefaultInstance() : book_;
+  }
+  /**
+   * <code>.bookstore.Book book = 1;</code>
+   */
+  public com.guagua.proto.bookstore.BookOrBuilder getBookOrBuilder() {
+    return getBook();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -129,8 +122,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+    if (book_ != null) {
+      output.writeMessage(1, getBook());
     }
     unknownFields.writeTo(output);
   }
@@ -141,8 +134,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+    if (book_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(1, getBook());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -159,8 +153,11 @@ private static final long serialVersionUID = 0L;
     }
     com.guagua.proto.bookstore.CreateBookResponse other = (com.guagua.proto.bookstore.CreateBookResponse) obj;
 
-    if (!getId()
-        .equals(other.getId())) return false;
+    if (hasBook() != other.hasBook()) return false;
+    if (hasBook()) {
+      if (!getBook()
+          .equals(other.getBook())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -172,8 +169,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + getId().hashCode();
+    if (hasBook()) {
+      hash = (37 * hash) + BOOK_FIELD_NUMBER;
+      hash = (53 * hash) + getBook().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -307,8 +306,12 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      id_ = "";
-
+      if (bookBuilder_ == null) {
+        book_ = null;
+      } else {
+        book_ = null;
+        bookBuilder_ = null;
+      }
       return this;
     }
 
@@ -335,7 +338,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.guagua.proto.bookstore.CreateBookResponse buildPartial() {
       com.guagua.proto.bookstore.CreateBookResponse result = new com.guagua.proto.bookstore.CreateBookResponse(this);
-      result.id_ = id_;
+      if (bookBuilder_ == null) {
+        result.book_ = book_;
+      } else {
+        result.book_ = bookBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -384,9 +391,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.guagua.proto.bookstore.CreateBookResponse other) {
       if (other == com.guagua.proto.bookstore.CreateBookResponse.getDefaultInstance()) return this;
-      if (!other.getId().isEmpty()) {
-        id_ = other.id_;
-        onChanged();
+      if (other.hasBook()) {
+        mergeBook(other.getBook());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -417,73 +423,121 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object id_ = "";
+    private com.guagua.proto.bookstore.Book book_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.guagua.proto.bookstore.Book, com.guagua.proto.bookstore.Book.Builder, com.guagua.proto.bookstore.BookOrBuilder> bookBuilder_;
     /**
-     * <code>string id = 1;</code>
+     * <code>.bookstore.Book book = 1;</code>
      */
-    public java.lang.String getId() {
-      java.lang.Object ref = id_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        id_ = s;
-        return s;
+    public boolean hasBook() {
+      return bookBuilder_ != null || book_ != null;
+    }
+    /**
+     * <code>.bookstore.Book book = 1;</code>
+     */
+    public com.guagua.proto.bookstore.Book getBook() {
+      if (bookBuilder_ == null) {
+        return book_ == null ? com.guagua.proto.bookstore.Book.getDefaultInstance() : book_;
       } else {
-        return (java.lang.String) ref;
+        return bookBuilder_.getMessage();
       }
     }
     /**
-     * <code>string id = 1;</code>
+     * <code>.bookstore.Book book = 1;</code>
      */
-    public com.google.protobuf.ByteString
-        getIdBytes() {
-      java.lang.Object ref = id_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        id_ = b;
-        return b;
+    public Builder setBook(com.guagua.proto.bookstore.Book value) {
+      if (bookBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        book_ = value;
+        onChanged();
       } else {
-        return (com.google.protobuf.ByteString) ref;
+        bookBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.bookstore.Book book = 1;</code>
+     */
+    public Builder setBook(
+        com.guagua.proto.bookstore.Book.Builder builderForValue) {
+      if (bookBuilder_ == null) {
+        book_ = builderForValue.build();
+        onChanged();
+      } else {
+        bookBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.bookstore.Book book = 1;</code>
+     */
+    public Builder mergeBook(com.guagua.proto.bookstore.Book value) {
+      if (bookBuilder_ == null) {
+        if (book_ != null) {
+          book_ =
+            com.guagua.proto.bookstore.Book.newBuilder(book_).mergeFrom(value).buildPartial();
+        } else {
+          book_ = value;
+        }
+        onChanged();
+      } else {
+        bookBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.bookstore.Book book = 1;</code>
+     */
+    public Builder clearBook() {
+      if (bookBuilder_ == null) {
+        book_ = null;
+        onChanged();
+      } else {
+        book_ = null;
+        bookBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.bookstore.Book book = 1;</code>
+     */
+    public com.guagua.proto.bookstore.Book.Builder getBookBuilder() {
+      
+      onChanged();
+      return getBookFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.bookstore.Book book = 1;</code>
+     */
+    public com.guagua.proto.bookstore.BookOrBuilder getBookOrBuilder() {
+      if (bookBuilder_ != null) {
+        return bookBuilder_.getMessageOrBuilder();
+      } else {
+        return book_ == null ?
+            com.guagua.proto.bookstore.Book.getDefaultInstance() : book_;
       }
     }
     /**
-     * <code>string id = 1;</code>
+     * <code>.bookstore.Book book = 1;</code>
      */
-    public Builder setId(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      id_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string id = 1;</code>
-     */
-    public Builder clearId() {
-      
-      id_ = getDefaultInstance().getId();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string id = 1;</code>
-     */
-    public Builder setIdBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      id_ = value;
-      onChanged();
-      return this;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        com.guagua.proto.bookstore.Book, com.guagua.proto.bookstore.Book.Builder, com.guagua.proto.bookstore.BookOrBuilder> 
+        getBookFieldBuilder() {
+      if (bookBuilder_ == null) {
+        bookBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            com.guagua.proto.bookstore.Book, com.guagua.proto.bookstore.Book.Builder, com.guagua.proto.bookstore.BookOrBuilder>(
+                getBook(),
+                getParentForChildren(),
+                isClean());
+        book_ = null;
+      }
+      return bookBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
