@@ -33,13 +33,22 @@ message <NameOfTheMessage> {
 
  */
 message HelloRequest {
-  string name = 1;
-  string address_home = 2;
+  // 枚举类的值就是java枚举类里定义的值
+  enum Gender {
+    UNKNOW = 0;
+    MALE = 1;
+    FEMALE = 2;
+  }
+
+  uint32 id = 1;
+  string name = 2;
+  uint32 age = 3;
   // 可选字典，
-  uint32 id = 3;
-//  repeated
+  // optional 在语法3中，不用写默认是 optional
+  string password = 4;
+  repeated string address = 5;
 }
 // 定义响应数据
 message HelloResponse {
-  string message = 1;
+  string uuid = 1;
 }

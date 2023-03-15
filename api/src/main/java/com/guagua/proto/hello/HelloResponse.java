@@ -20,7 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private HelloResponse() {
-    message_ = "";
+    uuid_ = "";
   }
 
   @java.lang.Override
@@ -50,7 +50,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            message_ = s;
+            uuid_ = s;
             break;
           }
           default: {
@@ -85,34 +85,34 @@ private static final long serialVersionUID = 0L;
             com.guagua.proto.hello.HelloResponse.class, com.guagua.proto.hello.HelloResponse.Builder.class);
   }
 
-  public static final int MESSAGE_FIELD_NUMBER = 1;
-  private volatile java.lang.Object message_;
+  public static final int UUID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object uuid_;
   /**
-   * <code>string message = 1;</code>
+   * <code>string uuid = 1;</code>
    */
-  public java.lang.String getMessage() {
-    java.lang.Object ref = message_;
+  public java.lang.String getUuid() {
+    java.lang.Object ref = uuid_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      message_ = s;
+      uuid_ = s;
       return s;
     }
   }
   /**
-   * <code>string message = 1;</code>
+   * <code>string uuid = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getMessageBytes() {
-    java.lang.Object ref = message_;
+      getUuidBytes() {
+    java.lang.Object ref = uuid_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      message_ = b;
+      uuid_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -133,8 +133,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getMessageBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
+    if (!getUuidBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, uuid_);
     }
     unknownFields.writeTo(output);
   }
@@ -145,8 +145,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getMessageBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
+    if (!getUuidBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, uuid_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -163,8 +163,8 @@ private static final long serialVersionUID = 0L;
     }
     com.guagua.proto.hello.HelloResponse other = (com.guagua.proto.hello.HelloResponse) obj;
 
-    if (!getMessage()
-        .equals(other.getMessage())) return false;
+    if (!getUuid()
+        .equals(other.getUuid())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -176,8 +176,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-    hash = (53 * hash) + getMessage().hashCode();
+    hash = (37 * hash) + UUID_FIELD_NUMBER;
+    hash = (53 * hash) + getUuid().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -315,7 +315,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      message_ = "";
+      uuid_ = "";
 
       return this;
     }
@@ -343,7 +343,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.guagua.proto.hello.HelloResponse buildPartial() {
       com.guagua.proto.hello.HelloResponse result = new com.guagua.proto.hello.HelloResponse(this);
-      result.message_ = message_;
+      result.uuid_ = uuid_;
       onBuilt();
       return result;
     }
@@ -392,8 +392,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.guagua.proto.hello.HelloResponse other) {
       if (other == com.guagua.proto.hello.HelloResponse.getDefaultInstance()) return this;
-      if (!other.getMessage().isEmpty()) {
-        message_ = other.message_;
+      if (!other.getUuid().isEmpty()) {
+        uuid_ = other.uuid_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -425,71 +425,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object message_ = "";
+    private java.lang.Object uuid_ = "";
     /**
-     * <code>string message = 1;</code>
+     * <code>string uuid = 1;</code>
      */
-    public java.lang.String getMessage() {
-      java.lang.Object ref = message_;
+    public java.lang.String getUuid() {
+      java.lang.Object ref = uuid_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        message_ = s;
+        uuid_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string message = 1;</code>
+     * <code>string uuid = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getMessageBytes() {
-      java.lang.Object ref = message_;
+        getUuidBytes() {
+      java.lang.Object ref = uuid_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        message_ = b;
+        uuid_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string message = 1;</code>
+     * <code>string uuid = 1;</code>
      */
-    public Builder setMessage(
+    public Builder setUuid(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      message_ = value;
+      uuid_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string message = 1;</code>
+     * <code>string uuid = 1;</code>
      */
-    public Builder clearMessage() {
+    public Builder clearUuid() {
       
-      message_ = getDefaultInstance().getMessage();
+      uuid_ = getDefaultInstance().getUuid();
       onChanged();
       return this;
     }
     /**
-     * <code>string message = 1;</code>
+     * <code>string uuid = 1;</code>
      */
-    public Builder setMessageBytes(
+    public Builder setUuidBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      message_ = value;
+      uuid_ = value;
       onChanged();
       return this;
     }

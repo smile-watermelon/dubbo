@@ -34,10 +34,52 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.grpc</groupId>-->
+<!--            <artifactId>grpc-api</artifactId>-->
+<!--            <version>1.44.0</version>-->
+<!--            &lt;!&ndash;            <scope>test</scope>&ndash;&gt;-->
+<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.grpc</groupId>-->
+        <!--            <artifactId>grpc-testing</artifactId>-->
+        <!--            <version>1.44.1</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-netty</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-services</artifactId>
+<!--            <version>1.44.0</version>-->
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-stub</artifactId>
+<!--            <version>1.47.0</version>-->
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>javax.annotation</groupId>-->
+        <!--            <artifactId>javax.annotation-api</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.grpc</groupId>-->
+        <!--            <artifactId>grpc-all</artifactId>-->
+        <!--            <version>1.44.1</version>-->
+        <!--        </dependency>-->
     </dependencies>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-bom</artifactId>
+                <version>1.44.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>com.google.protobuf</groupId>
                 <artifactId>protobuf-bom</artifactId>
@@ -57,19 +99,30 @@
                 <extensions>true</extensions>
                 <configuration>
                     <protocArtifact>com.google.protobuf:protoc:3.7.1:exe:${os.detected.classifier}</protocArtifact>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.30.2:exe:${os.detected.classifier}</pluginArtifact>
                     <pluginId>grpc-java</pluginId>
-                    <!--默认值，proto源文件路径-->
-                    <protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
-                    <!--                    <outputDirectory>${project.basedir}/src/main/java</outputDirectory>-->
+                    <!--设置 .proto源文件的目录，默认值是 ${project.basedir}/src/main/proto -->
+                    <!--                    <protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>-->
                     <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
                     <!--设置是否在生成java文件之前清空outputDirectory的文件，默认值为true，设置为false时也会覆盖同名文件-->
                     <clearOutputDirectory>false</clearOutputDirectory>
+                    <!--                    <includes>-->
+                    <!--                        <include>${project.basedir}/**/*.proto</include>-->
+                    <!--                    </includes>-->
+                    <!--                    <additionalProtoPathElements>-->
+                    <!--                        <element></element>-->
+                    <!--                        <pathElement></pathElement>-->
+                    <!--                        <protoPathElement></protoPathElement>-->
+                    <!--                        <protoPathElement>${project.basedir}/src/main/pc</protoPathElement>-->
+                    <!--                        <additionalProtoPathElement>${project.basedir}/src/main/pc</additionalProtoPathElement>-->
+                    <!--                    </additionalProtoPathElements>-->
                 </configuration>
                 <executions>
                     <execution>
                         <phase>compile</phase>
                         <goals>
                             <goal>compile</goal>
+                            <goal>compile-custom</goal>
                             <!--                            <goal>test-compile</goal>-->
                         </goals>
                     </execution>

@@ -8,31 +8,61 @@ public interface HelloRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string name = 1;</code>
+   * <code>uint32 id = 1;</code>
+   */
+  int getId();
+
+  /**
+   * <code>string name = 2;</code>
    */
   java.lang.String getName();
   /**
-   * <code>string name = 1;</code>
+   * <code>string name = 2;</code>
    */
   com.google.protobuf.ByteString
       getNameBytes();
 
   /**
-   * <code>string address_home = 2;</code>
+   * <code>uint32 age = 3;</code>
    */
-  java.lang.String getAddressHome();
-  /**
-   * <code>string address_home = 2;</code>
-   */
-  com.google.protobuf.ByteString
-      getAddressHomeBytes();
+  int getAge();
 
   /**
    * <pre>
    * 可选字典，
+   * optional 在语法3中，不用写默认是 optional
    * </pre>
    *
-   * <code>uint32 id = 3;</code>
+   * <code>string password = 4;</code>
    */
-  int getId();
+  java.lang.String getPassword();
+  /**
+   * <pre>
+   * 可选字典，
+   * optional 在语法3中，不用写默认是 optional
+   * </pre>
+   *
+   * <code>string password = 4;</code>
+   */
+  com.google.protobuf.ByteString
+      getPasswordBytes();
+
+  /**
+   * <code>repeated string address = 5;</code>
+   */
+  java.util.List<java.lang.String>
+      getAddressList();
+  /**
+   * <code>repeated string address = 5;</code>
+   */
+  int getAddressCount();
+  /**
+   * <code>repeated string address = 5;</code>
+   */
+  java.lang.String getAddress(int index);
+  /**
+   * <code>repeated string address = 5;</code>
+   */
+  com.google.protobuf.ByteString
+      getAddressBytes(int index);
 }

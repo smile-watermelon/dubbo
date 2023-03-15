@@ -30,7 +30,8 @@ private static final long serialVersionUID = 0L;
   }
   private HelloRequest() {
     name_ = "";
-    addressHome_ = "";
+    password_ = "";
+    address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -57,21 +58,35 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
+          case 8: {
 
-            name_ = s;
+            id_ = input.readUInt32();
             break;
           }
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            addressHome_ = s;
+            name_ = s;
             break;
           }
           case 24: {
 
-            id_ = input.readUInt32();
+            age_ = input.readUInt32();
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            password_ = s;
+            break;
+          }
+          case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
+            if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+              address_ = new com.google.protobuf.LazyStringArrayList();
+              mutable_bitField0_ |= 0x00000010;
+            }
+            address_.add(s);
             break;
           }
           default: {
@@ -89,6 +104,9 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000010) != 0)) {
+        address_ = address_.getUnmodifiableView();
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -106,10 +124,131 @@ private static final long serialVersionUID = 0L;
             com.guagua.proto.hello.HelloRequest.class, com.guagua.proto.hello.HelloRequest.Builder.class);
   }
 
-  public static final int NAME_FIELD_NUMBER = 1;
+  /**
+   * <pre>
+   * 枚举类的值就是java枚举类里定义的值
+   * </pre>
+   *
+   * Protobuf enum {@code hello.HelloRequest.Gender}
+   */
+  public enum Gender
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>UNKNOW = 0;</code>
+     */
+    UNKNOW(0),
+    /**
+     * <code>MALE = 1;</code>
+     */
+    MALE(1),
+    /**
+     * <code>FEMALE = 2;</code>
+     */
+    FEMALE(2),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>UNKNOW = 0;</code>
+     */
+    public static final int UNKNOW_VALUE = 0;
+    /**
+     * <code>MALE = 1;</code>
+     */
+    public static final int MALE_VALUE = 1;
+    /**
+     * <code>FEMALE = 2;</code>
+     */
+    public static final int FEMALE_VALUE = 2;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static Gender valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static Gender forNumber(int value) {
+      switch (value) {
+        case 0: return UNKNOW;
+        case 1: return MALE;
+        case 2: return FEMALE;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<Gender>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        Gender> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<Gender>() {
+            public Gender findValueByNumber(int number) {
+              return Gender.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.guagua.proto.hello.HelloRequest.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final Gender[] VALUES = values();
+
+    public static Gender valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private Gender(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:hello.HelloRequest.Gender)
+  }
+
+  private int bitField0_;
+  public static final int ID_FIELD_NUMBER = 1;
+  private int id_;
+  /**
+   * <code>uint32 id = 1;</code>
+   */
+  public int getId() {
+    return id_;
+  }
+
+  public static final int NAME_FIELD_NUMBER = 2;
   private volatile java.lang.Object name_;
   /**
-   * <code>string name = 1;</code>
+   * <code>string name = 2;</code>
    */
   public java.lang.String getName() {
     java.lang.Object ref = name_;
@@ -124,7 +263,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string name = 1;</code>
+   * <code>string name = 2;</code>
    */
   public com.google.protobuf.ByteString
       getNameBytes() {
@@ -140,51 +279,86 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int ADDRESS_HOME_FIELD_NUMBER = 2;
-  private volatile java.lang.Object addressHome_;
+  public static final int AGE_FIELD_NUMBER = 3;
+  private int age_;
   /**
-   * <code>string address_home = 2;</code>
+   * <code>uint32 age = 3;</code>
    */
-  public java.lang.String getAddressHome() {
-    java.lang.Object ref = addressHome_;
+  public int getAge() {
+    return age_;
+  }
+
+  public static final int PASSWORD_FIELD_NUMBER = 4;
+  private volatile java.lang.Object password_;
+  /**
+   * <pre>
+   * 可选字典，
+   * optional 在语法3中，不用写默认是 optional
+   * </pre>
+   *
+   * <code>string password = 4;</code>
+   */
+  public java.lang.String getPassword() {
+    java.lang.Object ref = password_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      addressHome_ = s;
+      password_ = s;
       return s;
     }
   }
   /**
-   * <code>string address_home = 2;</code>
+   * <pre>
+   * 可选字典，
+   * optional 在语法3中，不用写默认是 optional
+   * </pre>
+   *
+   * <code>string password = 4;</code>
    */
   public com.google.protobuf.ByteString
-      getAddressHomeBytes() {
-    java.lang.Object ref = addressHome_;
+      getPasswordBytes() {
+    java.lang.Object ref = password_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      addressHome_ = b;
+      password_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int ID_FIELD_NUMBER = 3;
-  private int id_;
+  public static final int ADDRESS_FIELD_NUMBER = 5;
+  private com.google.protobuf.LazyStringList address_;
   /**
-   * <pre>
-   * 可选字典，
-   * </pre>
-   *
-   * <code>uint32 id = 3;</code>
+   * <code>repeated string address = 5;</code>
    */
-  public int getId() {
-    return id_;
+  public com.google.protobuf.ProtocolStringList
+      getAddressList() {
+    return address_;
+  }
+  /**
+   * <code>repeated string address = 5;</code>
+   */
+  public int getAddressCount() {
+    return address_.size();
+  }
+  /**
+   * <code>repeated string address = 5;</code>
+   */
+  public java.lang.String getAddress(int index) {
+    return address_.get(index);
+  }
+  /**
+   * <code>repeated string address = 5;</code>
+   */
+  public com.google.protobuf.ByteString
+      getAddressBytes(int index) {
+    return address_.getByteString(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -201,14 +375,20 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
-    }
-    if (!getAddressHomeBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, addressHome_);
-    }
     if (id_ != 0) {
-      output.writeUInt32(3, id_);
+      output.writeUInt32(1, id_);
+    }
+    if (!getNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
+    }
+    if (age_ != 0) {
+      output.writeUInt32(3, age_);
+    }
+    if (!getPasswordBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, password_);
+    }
+    for (int i = 0; i < address_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, address_.getRaw(i));
     }
     unknownFields.writeTo(output);
   }
@@ -219,15 +399,27 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
-    }
-    if (!getAddressHomeBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, addressHome_);
-    }
     if (id_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(3, id_);
+        .computeUInt32Size(1, id_);
+    }
+    if (!getNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+    }
+    if (age_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt32Size(3, age_);
+    }
+    if (!getPasswordBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, password_);
+    }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < address_.size(); i++) {
+        dataSize += computeStringSizeNoTag(address_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getAddressList().size();
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -244,12 +436,16 @@ private static final long serialVersionUID = 0L;
     }
     com.guagua.proto.hello.HelloRequest other = (com.guagua.proto.hello.HelloRequest) obj;
 
-    if (!getName()
-        .equals(other.getName())) return false;
-    if (!getAddressHome()
-        .equals(other.getAddressHome())) return false;
     if (getId()
         != other.getId()) return false;
+    if (!getName()
+        .equals(other.getName())) return false;
+    if (getAge()
+        != other.getAge()) return false;
+    if (!getPassword()
+        .equals(other.getPassword())) return false;
+    if (!getAddressList()
+        .equals(other.getAddressList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -261,12 +457,18 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + ADDRESS_HOME_FIELD_NUMBER;
-    hash = (53 * hash) + getAddressHome().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId();
+    hash = (37 * hash) + NAME_FIELD_NUMBER;
+    hash = (53 * hash) + getName().hashCode();
+    hash = (37 * hash) + AGE_FIELD_NUMBER;
+    hash = (53 * hash) + getAge();
+    hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+    hash = (53 * hash) + getPassword().hashCode();
+    if (getAddressCount() > 0) {
+      hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
+      hash = (53 * hash) + getAddressList().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -413,12 +615,16 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      name_ = "";
-
-      addressHome_ = "";
-
       id_ = 0;
 
+      name_ = "";
+
+      age_ = 0;
+
+      password_ = "";
+
+      address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000010);
       return this;
     }
 
@@ -445,9 +651,18 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.guagua.proto.hello.HelloRequest buildPartial() {
       com.guagua.proto.hello.HelloRequest result = new com.guagua.proto.hello.HelloRequest(this);
-      result.name_ = name_;
-      result.addressHome_ = addressHome_;
+      int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       result.id_ = id_;
+      result.name_ = name_;
+      result.age_ = age_;
+      result.password_ = password_;
+      if (((bitField0_ & 0x00000010) != 0)) {
+        address_ = address_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000010);
+      }
+      result.address_ = address_;
+      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -496,16 +711,29 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.guagua.proto.hello.HelloRequest other) {
       if (other == com.guagua.proto.hello.HelloRequest.getDefaultInstance()) return this;
+      if (other.getId() != 0) {
+        setId(other.getId());
+      }
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
         onChanged();
       }
-      if (!other.getAddressHome().isEmpty()) {
-        addressHome_ = other.addressHome_;
+      if (other.getAge() != 0) {
+        setAge(other.getAge());
+      }
+      if (!other.getPassword().isEmpty()) {
+        password_ = other.password_;
         onChanged();
       }
-      if (other.getId() != 0) {
-        setId(other.getId());
+      if (!other.address_.isEmpty()) {
+        if (address_.isEmpty()) {
+          address_ = other.address_;
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          ensureAddressIsMutable();
+          address_.addAll(other.address_);
+        }
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -535,10 +763,37 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+    private int bitField0_;
+
+    private int id_ ;
+    /**
+     * <code>uint32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+    /**
+     * <code>uint32 id = 1;</code>
+     */
+    public Builder setId(int value) {
+      
+      id_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint32 id = 1;</code>
+     */
+    public Builder clearId() {
+      
+      id_ = 0;
+      onChanged();
+      return this;
+    }
 
     private java.lang.Object name_ = "";
     /**
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -553,7 +808,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -569,7 +824,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      */
     public Builder setName(
         java.lang.String value) {
@@ -582,7 +837,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      */
     public Builder clearName() {
       
@@ -591,7 +846,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      */
     public Builder setNameBytes(
         com.google.protobuf.ByteString value) {
@@ -605,109 +860,216 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object addressHome_ = "";
+    private int age_ ;
     /**
-     * <code>string address_home = 2;</code>
+     * <code>uint32 age = 3;</code>
      */
-    public java.lang.String getAddressHome() {
-      java.lang.Object ref = addressHome_;
+    public int getAge() {
+      return age_;
+    }
+    /**
+     * <code>uint32 age = 3;</code>
+     */
+    public Builder setAge(int value) {
+      
+      age_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint32 age = 3;</code>
+     */
+    public Builder clearAge() {
+      
+      age_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object password_ = "";
+    /**
+     * <pre>
+     * 可选字典，
+     * optional 在语法3中，不用写默认是 optional
+     * </pre>
+     *
+     * <code>string password = 4;</code>
+     */
+    public java.lang.String getPassword() {
+      java.lang.Object ref = password_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        addressHome_ = s;
+        password_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string address_home = 2;</code>
+     * <pre>
+     * 可选字典，
+     * optional 在语法3中，不用写默认是 optional
+     * </pre>
+     *
+     * <code>string password = 4;</code>
      */
     public com.google.protobuf.ByteString
-        getAddressHomeBytes() {
-      java.lang.Object ref = addressHome_;
+        getPasswordBytes() {
+      java.lang.Object ref = password_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        addressHome_ = b;
+        password_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string address_home = 2;</code>
+     * <pre>
+     * 可选字典，
+     * optional 在语法3中，不用写默认是 optional
+     * </pre>
+     *
+     * <code>string password = 4;</code>
      */
-    public Builder setAddressHome(
+    public Builder setPassword(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      addressHome_ = value;
+      password_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string address_home = 2;</code>
+     * <pre>
+     * 可选字典，
+     * optional 在语法3中，不用写默认是 optional
+     * </pre>
+     *
+     * <code>string password = 4;</code>
      */
-    public Builder clearAddressHome() {
+    public Builder clearPassword() {
       
-      addressHome_ = getDefaultInstance().getAddressHome();
+      password_ = getDefaultInstance().getPassword();
       onChanged();
       return this;
     }
     /**
-     * <code>string address_home = 2;</code>
+     * <pre>
+     * 可选字典，
+     * optional 在语法3中，不用写默认是 optional
+     * </pre>
+     *
+     * <code>string password = 4;</code>
      */
-    public Builder setAddressHomeBytes(
+    public Builder setPasswordBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      addressHome_ = value;
+      password_ = value;
       onChanged();
       return this;
     }
 
-    private int id_ ;
-    /**
-     * <pre>
-     * 可选字典，
-     * </pre>
-     *
-     * <code>uint32 id = 3;</code>
-     */
-    public int getId() {
-      return id_;
+    private com.google.protobuf.LazyStringList address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    private void ensureAddressIsMutable() {
+      if (!((bitField0_ & 0x00000010) != 0)) {
+        address_ = new com.google.protobuf.LazyStringArrayList(address_);
+        bitField0_ |= 0x00000010;
+       }
     }
     /**
-     * <pre>
-     * 可选字典，
-     * </pre>
-     *
-     * <code>uint32 id = 3;</code>
+     * <code>repeated string address = 5;</code>
      */
-    public Builder setId(int value) {
-      
-      id_ = value;
+    public com.google.protobuf.ProtocolStringList
+        getAddressList() {
+      return address_.getUnmodifiableView();
+    }
+    /**
+     * <code>repeated string address = 5;</code>
+     */
+    public int getAddressCount() {
+      return address_.size();
+    }
+    /**
+     * <code>repeated string address = 5;</code>
+     */
+    public java.lang.String getAddress(int index) {
+      return address_.get(index);
+    }
+    /**
+     * <code>repeated string address = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getAddressBytes(int index) {
+      return address_.getByteString(index);
+    }
+    /**
+     * <code>repeated string address = 5;</code>
+     */
+    public Builder setAddress(
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureAddressIsMutable();
+      address_.set(index, value);
       onChanged();
       return this;
     }
     /**
-     * <pre>
-     * 可选字典，
-     * </pre>
-     *
-     * <code>uint32 id = 3;</code>
+     * <code>repeated string address = 5;</code>
      */
-    public Builder clearId() {
-      
-      id_ = 0;
+    public Builder addAddress(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureAddressIsMutable();
+      address_.add(value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string address = 5;</code>
+     */
+    public Builder addAllAddress(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureAddressIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, address_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string address = 5;</code>
+     */
+    public Builder clearAddress() {
+      address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000010);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated string address = 5;</code>
+     */
+    public Builder addAddressBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensureAddressIsMutable();
+      address_.add(value);
       onChanged();
       return this;
     }

@@ -16,5 +16,5 @@ message CreateBookResponse {
 }
 
 service BookService {
-  rpc CreateBook(CreateBookRequest) returns (CreateBookResponse) {};
+  rpc CreateBook(CreateBookRequest) returns (CreateBookResponse);
 }
