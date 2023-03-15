@@ -7,6 +7,7 @@
         <groupId>com.guagua</groupId>
         <artifactId>dubbo</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath/>
     </parent>
 
     <artifactId>server</artifactId>
@@ -22,6 +23,12 @@
             <groupId>com.guagua</groupId>
             <artifactId>api</artifactId>
             <version>${project.parent.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.guagua</groupId>
+            <artifactId>api-grpc</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>

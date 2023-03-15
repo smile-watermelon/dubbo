@@ -7,8 +7,13 @@ spring:
 dubbo:
   application:
     name: ${spring.application.name}
-  protocol:
-    name: dubbo
-    port: 20880
+  protocols:
+    # 多协议端口不能相同
+    grpc:
+      name: grpc
+      port: 20881
+    dubbo:
+      name: dubbo
+      port: 20880
   registry:
     address: zookeeper://${zookeeper.address:127.0.0.1}:2181

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class Task implements CommandLineRunner {
 
-    @DubboReference
+    @DubboReference(protocol = "dubbo")
     private DemoService demoService;
 
     @Override

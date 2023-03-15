@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.guagua.proto.hello";
+option java_outer_classname = "HelloGrpcServiceProto";
+package hello;
+
+
+message HelloRequest {
+  uint32 id = 1;
+  string name = 2;
+  uint32 age = 3;
+  // 可选字典，
+  // optional 在语法3中，不用写默认是 optional
+  string password = 4;
+  repeated string address = 5;
+  // deprecated 弃用该字段，java里在字段上加@Deprecated注解
+  bool flag = 6 [deprecated = true];
+}
+
+// 定义响应数据
+message HelloResponse {
+  string uuid = 1;
+}
+
+service HelloGrpcService {
+  rpc Say(HelloRequest) returns (HelloResponse);
+}
