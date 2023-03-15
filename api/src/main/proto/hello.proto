@@ -1,0 +1,45 @@
+syntax = "proto3";
+// 是否输出位多个文件，为true时
+/**
+HelloReply
+HelloReplyOrBuilder
+HelloRequest
+HelloRequestOrBuilder
+HelloWorldProto
+ */
+// false 时
+/**
+HelloWorldProto
+ */
+option java_multiple_files = true;
+// 定义输出的路径
+option java_package = "com.guagua.proto.hello";
+// 输出的java文件名，这个名字不能和定义的service，message 名一样
+//option java_outer_classname = "HelloRequest";
+option objc_class_prefix = "HLW";
+package hello;
+
+// 定义请求数据
+/**
+message <NameOfTheMessage> {
+  <data-type> name = <tag>
+}
+1、消息使用大写
+2、字段名小写加下划线
+3、tag 是 1 ~ 2^29 - 1 的数字，protobuf 按照tag 序列化数据，19000 ~ 19999 之间的数字除外
+1 ~ 15 的数字仅需要一个字节编码
+16 ~ 2047 需要两个字节
+4、消息同级别 tag 必须唯一
+
+ */
+message HelloRequest {
+  string name = 1;
+  string address_home = 2;
+  // 可选字典，
+  uint32 id = 3;
+//  repeated
+}
+// 定义响应数据
+message HelloResponse {
+  string message = 1;
+}

@@ -1,9 +1,7 @@
 package com.guagua.basic;
 
-import com.guagua.basic.HelloService;
 import org.apache.dubbo.config.ReferenceConfig;
 import org.apache.dubbo.config.RegistryConfig;
-import org.apache.dubbo.config.ServiceConfig;
 import org.apache.dubbo.config.bootstrap.DubboBootstrap;
 
 public class HelloClient {

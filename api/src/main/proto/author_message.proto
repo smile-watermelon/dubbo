@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package bookstore;
+
+// todo 时间字段
+option java_package = "com.guagua.proto.bookstore";
+
+message Author {
+  string name = 1;
+
+}
