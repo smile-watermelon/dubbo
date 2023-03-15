@@ -33,10 +33,12 @@ public final class Hello {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013hello.proto\022\005hello\">\n\014HelloRequest\022\014\n\004" +
-      "name\030\001 \001(\t\022\024\n\014address_home\030\002 \001(\t\022\n\n\002id\030\003" +
-      " \001(\r\" \n\rHelloResponse\022\017\n\007message\030\001 \001(\tB " +
-      "\n\026com.guagua.proto.helloP\001\242\002\003HLWb\006proto3"
+      "\n\013hello.proto\022\005hello\"\204\001\n\014HelloRequest\022\n\n" +
+      "\002id\030\001 \001(\r\022\014\n\004name\030\002 \001(\t\022\013\n\003age\030\003 \001(\r\022\020\n\010" +
+      "password\030\004 \001(\t\022\017\n\007address\030\005 \003(\t\"*\n\006Gende" +
+      "r\022\n\n\006UNKNOW\020\000\022\010\n\004MALE\020\001\022\n\n\006FEMALE\020\002\"\035\n\rH" +
+      "elloResponse\022\014\n\004uuid\030\001 \001(\tB \n\026com.guagua" +
+      ".proto.helloP\001\242\002\003HLWb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -55,13 +57,13 @@ public final class Hello {
     internal_static_hello_HelloRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_hello_HelloRequest_descriptor,
-        new java.lang.String[] { "Name", "AddressHome", "Id", });
+        new java.lang.String[] { "Id", "Name", "Age", "Password", "Address", });
     internal_static_hello_HelloResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_hello_HelloResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_hello_HelloResponse_descriptor,
-        new java.lang.String[] { "Message", });
+        new java.lang.String[] { "Uuid", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
