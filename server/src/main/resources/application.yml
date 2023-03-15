@@ -1,8 +1,14 @@
+server:
+  port: 8888
 spring:
   application:
     name: server
+
+dubbo:
+  application:
+    name: ${spring.application.name}
   protocol:
     name: dubbo
-    port: -1
+    port: 20880
   registry:
-    address: zookeeper://127.0.0.1:2181
+    address: zookeeper://${zookeeper.address:127.0.0.1}:2181
