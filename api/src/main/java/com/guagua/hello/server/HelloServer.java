@@ -14,6 +14,10 @@ import java.util.concurrent.CountDownLatch;
  */
 public class HelloServer {
 
+    /**
+     * todo proto 定义的标量字段有默认值，业务处理时需要注意
+     * bool = false
+     */
     public static void main(String[] args) throws IOException {
         Server server = ServerBuilder.forPort(8888)
                 .addService(new HelloService())

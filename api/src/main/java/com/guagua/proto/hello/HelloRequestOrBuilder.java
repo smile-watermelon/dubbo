@@ -65,4 +65,9 @@ public interface HelloRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getAddressBytes(int index);
+
+  /**
+   * <code>bool flag = 6;</code>
+   */
+  boolean getFlag();
 }

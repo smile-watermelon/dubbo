@@ -16,6 +16,7 @@ public class HelloService extends HelloServiceGrpc.HelloServiceImplBase {
     public void say(HelloRequest request, StreamObserver<HelloResponse> responseObserver) {
         String uuid = UUID.randomUUID().toString();
         System.out.println(uuid);
+        System.out.println("flag default value = " + request.getFlag()); // false
 
         responseObserver.onNext(
                 HelloResponse.newBuilder()

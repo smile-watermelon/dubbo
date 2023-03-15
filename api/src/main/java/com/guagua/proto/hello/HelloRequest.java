@@ -89,6 +89,11 @@ private static final long serialVersionUID = 0L;
             address_.add(s);
             break;
           }
+          case 48: {
+
+            flag_ = input.readBool();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -361,6 +366,15 @@ private static final long serialVersionUID = 0L;
     return address_.getByteString(index);
   }
 
+  public static final int FLAG_FIELD_NUMBER = 6;
+  private boolean flag_;
+  /**
+   * <code>bool flag = 6;</code>
+   */
+  public boolean getFlag() {
+    return flag_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -389,6 +403,9 @@ private static final long serialVersionUID = 0L;
     }
     for (int i = 0; i < address_.size(); i++) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, address_.getRaw(i));
+    }
+    if (flag_ != false) {
+      output.writeBool(6, flag_);
     }
     unknownFields.writeTo(output);
   }
@@ -421,6 +438,10 @@ private static final long serialVersionUID = 0L;
       size += dataSize;
       size += 1 * getAddressList().size();
     }
+    if (flag_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(6, flag_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -446,6 +467,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getPassword())) return false;
     if (!getAddressList()
         .equals(other.getAddressList())) return false;
+    if (getFlag()
+        != other.getFlag()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -469,6 +492,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + ADDRESS_FIELD_NUMBER;
       hash = (53 * hash) + getAddressList().hashCode();
     }
+    hash = (37 * hash) + FLAG_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getFlag());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -625,6 +651,8 @@ private static final long serialVersionUID = 0L;
 
       address_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       bitField0_ = (bitField0_ & ~0x00000010);
+      flag_ = false;
+
       return this;
     }
 
@@ -662,6 +690,7 @@ private static final long serialVersionUID = 0L;
         bitField0_ = (bitField0_ & ~0x00000010);
       }
       result.address_ = address_;
+      result.flag_ = flag_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -734,6 +763,9 @@ private static final long serialVersionUID = 0L;
           address_.addAll(other.address_);
         }
         onChanged();
+      }
+      if (other.getFlag() != false) {
+        setFlag(other.getFlag());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1070,6 +1102,32 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       ensureAddressIsMutable();
       address_.add(value);
+      onChanged();
+      return this;
+    }
+
+    private boolean flag_ ;
+    /**
+     * <code>bool flag = 6;</code>
+     */
+    public boolean getFlag() {
+      return flag_;
+    }
+    /**
+     * <code>bool flag = 6;</code>
+     */
+    public Builder setFlag(boolean value) {
+      
+      flag_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bool flag = 6;</code>
+     */
+    public Builder clearFlag() {
+      
+      flag_ = false;
       onChanged();
       return this;
     }
