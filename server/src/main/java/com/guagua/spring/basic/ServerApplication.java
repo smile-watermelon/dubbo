@@ -1,4 +1,4 @@
-package com.guagua.spring;
+package com.guagua.spring.basic;
 
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
@@ -6,15 +6,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @author guagua
- * @date 2023/3/14 01:23
+ * @date 2023/3/14 01:24
  * @describe
  */
 
 @SpringBootApplication
 @EnableDubbo
-public class ClientApplication {
+public class ServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ClientApplication.class, args);
+        SpringApplication.run(ServerApplication.class, args);
     }
 }

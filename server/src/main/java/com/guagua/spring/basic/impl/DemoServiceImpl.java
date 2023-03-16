@@ -1,4 +1,4 @@
-package com.guagua.spring.impl;
+package com.guagua.spring.basic.impl;
 
 import com.guagua.spring.DemoService;
 import org.apache.dubbo.common.constants.ClusterRules;
@@ -40,7 +40,9 @@ import org.apache.dubbo.config.annotation.DubboService;
  *         proxy = "",
  *         // 服务支持的最大连接数，-1 = 共享连接
  *         connections = -1
- *         // 还有很多
+ *         // 值为local/remote, local 表示调用当前JVM 内的服务
+ *         scope
+ *
  */
 @DubboService(protocol = "dubbo")
 public class DemoServiceImpl implements DemoService {

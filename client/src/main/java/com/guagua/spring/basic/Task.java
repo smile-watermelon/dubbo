@@ -1,5 +1,6 @@
-package com.guagua.spring;
+package com.guagua.spring.basic;
 
+import com.guagua.spring.DemoService;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

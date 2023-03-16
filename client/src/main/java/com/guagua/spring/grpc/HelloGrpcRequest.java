@@ -1,4 +1,4 @@
-package com.guagua.spring;
+package com.guagua.spring.grpc;
 
 import com.guagua.proto.hello.DubboHelloGrpcServiceGrpc;
 import com.guagua.proto.hello.HelloRequest;

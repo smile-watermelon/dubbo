@@ -1,3 +1,6 @@
+server:
+  port: 8890
+
 spring:
   application:
     name: client
@@ -5,8 +8,12 @@ spring:
 dubbo:
   application:
     name: ${spring.application.name}
-  protocol:
-    name: dubbo
-    port: -1
+  protocols:
+    dubbo:
+      name: dubbo
+      port: -1
+    grpc:
+      name: grpc
+      port: -1
   registry:
     address: zookeeper://${zookeeper.address:127.0.0.1}:2181

@@ -4,16 +4,35 @@ spring:
   application:
     name: server
 
+grpc:
+  client:
+    __name__:
+      negotiationType: PLAINTEXT
+
 dubbo:
   application:
     name: ${spring.application.name}
-  protocols:
+  protocol:
+    name: grpc
+    port: 20880
+#  protocols:
     # 多协议端口不能相同
-    grpc:
-      name: grpc
-      port: 20881
-    dubbo:
-      name: dubbo
-      port: 20880
+#    grpc1:
+#      name: grpc
+#      port: 20881
+#    dubbo:
+#      name: dubbo
+#      port: 20881
+  # 多注册中心
   registry:
     address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+#  registries:
+#    registry1:
+#      address: 10.211.55.60:2181
+#      protocol: zookeeper
+#    registry2:
+#      address: 10.211.55.61:2181
+#      protocol: zookeeper
+#    registry3:
+#      address: 10.211.55.62:2181
+#      protocol: zookeeper
