@@ -13,14 +13,14 @@ import java.util.UUID;
  * @date 2023/3/16 14:26
  * @describe
  */
-@DubboService(protocol = "grpc", weight = 100)
+@DubboService(protocol = "grpc1", weight = 100)
 public class HelloGrpcServiceImpl extends DubboHelloGrpcServiceGrpc.HelloGrpcServiceImplBase {
 
     @Override
     public void say(HelloRequest request, StreamObserver<HelloResponse> responseObserver) {
         responseObserver.onNext(
                 HelloResponse.newBuilder()
-                        .setUuid(UUID.randomUUID().toString() + "....... server 1")
+                        .setUuid(UUID.randomUUID().toString() + "....... server 2")
                         .build()
         );
         responseObserver.onCompleted();

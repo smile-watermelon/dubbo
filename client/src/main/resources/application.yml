@@ -8,12 +8,5 @@ spring:
 dubbo:
   application:
     name: ${spring.application.name}
-  protocols:
-    dubbo:
-      name: dubbo
-      port: -1
-    grpc:
-      name: grpc
-      port: -1
   registry:
     address: zookeeper://${zookeeper.address:127.0.0.1}:2181

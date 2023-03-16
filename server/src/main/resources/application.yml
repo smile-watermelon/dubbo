@@ -1,5 +1,5 @@
-server:
-  port: 8888
+#server:
+#  port: 8888
 spring:
   application:
     name: server
@@ -10,22 +10,34 @@ grpc:
       negotiationType: PLAINTEXT
 
 dubbo:
+  #  metrics:
+  #    aggregation:
+  #      enabled: true
   application:
     name: ${spring.application.name}
-  protocol:
-    name: grpc
-    port: 20880
-#  protocols:
+  #  protocol:
+  #    name: grpc
+  #    port: -1
+  protocols:
     # 多协议端口不能相同
-#    grpc1:
-#      name: grpc
-#      port: 20881
-#    dubbo:
-#      name: dubbo
-#      port: 20881
-  # 多注册中心
+    grpc1:
+      name: grpc
+      port: -1
+    dubbo1:
+      name: dubbo
+      port: -1
+
   registry:
     address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+
+  # 多注册中心
+  # 配置高可用，模拟leader节点宕机，重连新选举的leader
+  #Session establishment complete on server 10.211.55.62/10.211.55.62:2181, sessionid = 0x10008b2035e0004, negotiated timeout = 40000
+  #State change: RECONNECTED
+#  registry:
+#    protocol: zookeeper
+#    address: 10.211.55.60:2181,10.211.55.61:2181,10.211.55.62:2181
+
 #  registries:
 #    registry1:
 #      address: 10.211.55.60:2181
