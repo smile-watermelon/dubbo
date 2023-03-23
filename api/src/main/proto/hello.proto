@@ -16,7 +16,7 @@ option java_multiple_files = true;
 option java_package = "com.guagua.proto.hello";
 // 输出的java文件名，这个名字不能和定义的service，message 名一样
 //option java_outer_classname = "HelloRequest";
-option objc_class_prefix = "HLW";
+//option objc_class_prefix = "HLW";
 package hello;
 
 // 定义请求数据

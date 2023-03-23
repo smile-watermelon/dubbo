@@ -1,0 +1,27 @@
+dubboConfigAliasPostProcessor
+dubboConfigBeanInitializer
+org.apache.dubbo.config.spring.context.DubboDeployApplicationListener
+org.apache.dubbo.spring.boot.autoconfigure.DubboRelaxedBinding2AutoConfiguration
+
+// 导入 dubbo 组件扫描注册器 DubboComponentScanRegistrar 注册 服务注解后置处理器bean ServiceAnnotationPostProcessor
+org.apache.dubbo.config.spring.beans.factory.annotation.ServiceAnnotationPostProcessor#0
+    |--- ServiceAnnotationPostProcessor 通过这个注解后置处理器，扫描包拿到所有 注解了@DubboService 的 bean，注册到springboot
+
+
+dubboReferenceBeanManager
+dubboConfigBeanDefinitionConflictApplicationListener
+dubbo-service-class-base-packages
+dubbo-org.apache.dubbo.spring.boot.autoconfigure.DubboConfigurationProperties
+dubboServicePackagesHolder
+
+org.apache.dubbo.spring.boot.autoconfigure.DubboListenerAutoConfiguration
+
+dubboConfigDefaultPropertyValueBeanPostProcessor
+
+spring初始化 bean 后 通过调用 bean 的探测器 ApplicationListenerDetector 添加监听器
+ApplicationListenerDetector
+    |--- org.apache.dubbo.config.spring.context.DubboConfigApplicationListener 通过 DubboConfigApplicationListener
+
+
+
+org.apache.dubbo.spring.boot.autoconfigure.DubboAutoConfiguration

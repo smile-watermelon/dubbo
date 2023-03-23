@@ -17,8 +17,10 @@ public class HelloClient {
                 .usePlaintext()
                 .build();
 
+        int number = HelloRequest.Gender.FEMALE.getNumber();
         HelloResponse response = HelloServiceGrpc.newBlockingStub(channel)
-                .say(HelloRequest.newBuilder()
+                .say(
+                        HelloRequest.newBuilder()
                         .setName("guagua")
                         .setAge(18)
                         .build()

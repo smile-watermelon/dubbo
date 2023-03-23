@@ -3,6 +3,7 @@ package com.guagua.spring.basic;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author guagua
@@ -15,6 +16,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ServerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServerApplication.class, args);
+        ConfigurableApplicationContext run = SpringApplication.run(ServerApplication.class, args);
+        String[] beanDefinitionNames = run.getBeanDefinitionNames();
+//        Arrays.stream(beanDefinitionNames)
+//                .filter(beanName -> beanName.contains("dubbo"))
+//                .collect(Collectors.toSet()).forEach(System.out::println);
     }
 }

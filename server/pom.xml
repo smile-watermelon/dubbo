@@ -52,6 +52,32 @@
             <artifactId>curator-x-discovery</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-actuator</artifactId>
+        </dependency>
+
+<!--        docker run &#45;&#45;privileged=true &#45;&#45;name prometheus -p 9090:9090 -v /Users/guagua/Downloads/prometheus-2.42.0.darwin-arm64/config:/etc/prometheus prom/prometheus:v2.42.0-->
+<!--        docker run &#45;&#45;privileged &#45;&#45;rm &#45;&#45;name prometheus -p 9090:9090 -v /Users/guagua/Downloads/prometheus-2.42.0.darwin-arm64/config:/etc/prometheus prom/prometheus:v2.42.0-->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>io.micrometer</groupId>-->
 <!--            <artifactId>micrometer-core</artifactId>-->

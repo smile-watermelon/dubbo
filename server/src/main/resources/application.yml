@@ -1,8 +1,27 @@
-#server:
-#  port: 8888
+server:
+  port: 8888
 spring:
   application:
     name: server
+
+#以下示例 scrape_config 添加到 prometheus.yml ：
+#scrape_configs:
+#  - job_name: "spring"
+#    metrics_path: "/actuator/prometheus"
+#    static_configs:
+#      - targets: ["HOST:PORT"]
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"
+#          - info
+#          - metrics
+  info:
+    env:
+      enabled: true
 
 grpc:
   client:
@@ -14,6 +33,7 @@ dubbo:
   #    aggregation:
   #      enabled: true
   application:
+    qos-enable: false
     name: ${spring.application.name}
   #  protocol:
   #    name: grpc
@@ -29,6 +49,7 @@ dubbo:
 
   registry:
     address: zookeeper://${zookeeper.address:127.0.0.1}:2181
+    timeout: 3600000
 
   # 多注册中心
   # 配置高可用，模拟leader节点宕机，重连新选举的leader

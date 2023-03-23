@@ -1,9 +1,6 @@
 package com.guagua.spring.route.services;
 
 import com.guagua.basic.HelloService;
-import com.guagua.proto.hello.DubboHelloGrpcServiceGrpc;
-import com.guagua.proto.hello.HelloRequest;
-import com.guagua.proto.hello.HelloResponse;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +13,10 @@ import org.springframework.stereotype.Service;
 public class HelloServiceImpl implements HelloService {
 
     @DubboReference(scope = "remote", interfaceName = "com.guagua.basic.HelloService", parameters = {
-            "tag=gray"
-    }, tag = "vip")
+            "tag=gray"}
+            , tag = "vip"
+//            , stub = "com.guagua.basic.HelloService"
+    )
     HelloService helloService;
 
     @Override

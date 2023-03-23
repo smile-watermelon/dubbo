@@ -3,6 +3,9 @@ package com.guagua.spring.route;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.Arrays;
 
 /**
  * @author guagua
@@ -14,6 +17,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class RouteClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(RouteClientApplication.class, args);
+        ConfigurableApplicationContext run = SpringApplication.run(RouteClientApplication.class, args);
+        String[] names = run.getBeanDefinitionNames();
+        Arrays.stream(names).forEach(System.out::println);
     }
 }
